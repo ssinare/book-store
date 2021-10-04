@@ -50,14 +50,16 @@ class CommentController extends Controller
      */
     public function create(Request $request)
     {
-        $books = Book::orderBy('title', 'asc')->get();
-        $authors = Author::orderBy('surname', 'asc')->get();
-        return view('comment.create', [
-            'books' => $books,
-            'book_id' => $request->book_id ?? 'null',
-            'authors' => $authors,
-            'author_id' => $request->author_id ?? 'null',
-        ]);
+        echo ($request->book_id);
+        echo ($request->author_id);
+
+        // return view('comment.create', [
+        //     'books' => $books,
+        //     'book_id' => $request->book_id ?? 'null',
+
+        //     'authors' => $authors,
+        //     'author_id' => $request->author_id ?? 'null',
+        // ]);
     }
 
     /**
@@ -116,8 +118,7 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        $books = Book::orderBy('name')->get();
-        return view('comment.edit', ['comment' => $comment, 'books' => $books]);
+        //
     }
 
     /**
@@ -129,31 +130,7 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        $validator = Validator::make(
-            $request->all(),
-            [
-                'comment_user' => ['required', 'min:3', 'max:30'],
-                'comment_date' => ['required', 'min:4', 'max:60'],
-                'comment_comment' => ['required', 'min:1', 'max:500'],
-                'book_id' => ['integer', 'min:1', 'max:10000'],
-                'author_id' => ['integer', 'min:1', 'max:10000'],
-            ]
-        );
-
-        if ($validator->fails()) {
-            $request->flash();
-            return redirect()->back()->withErrors($validator);
-        }
-        $comment->user = $request->comment_user;
-        $comment->date = $request->comment_date;
-        $comment->comment = str_replace('script', '', $request->comment_comment);
-        $comment->book_id = $request->book_id;
-        $comment->author_id = $request->author_id;
-        $comment->save();
-
-        return redirect()
-            ->route('comment.index')
-            ->with('success_message', 'Comment updated.');
+        //
     }
 
     /**

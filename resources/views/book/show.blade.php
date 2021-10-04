@@ -22,7 +22,7 @@
                                 </li>                           
                             @endforeach            
                             </div> 
-                            <div><a href="{{route('comment.create',[$comment])}}" class="btn btn-secondary m-2">Add comment</a></a></div>                             
+                            {{-- <div><a href="{{route('comment.create',[$comment])}}" class="btn btn-secondary m-2">Add comment</a></a></div>                              --}}
                         </div>
                     </div>
                    </div>                     

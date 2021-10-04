@@ -16,10 +16,15 @@
                                 <div class="list-block_content" style="margin: 10px; font-style: italic">
                                     <div> <b>{{$author->name}} {{$author->surname}}</b></div> 
                                     <div><span>Author about: {{$author->about}}</span></div>
-                                    @if ($author->bookByAuthor->count()) 
-                                    <small>Author has {{$author->bookByAuthor->count()}} books: </small>
-                                    <a href="{{route('book.show',[$book])}}" class="btn btn-light">{{$book->title}}</a>
-                                    {{-- <a href="{{route('book.show',$author->bookByAuthor->get())}}" class="btn btn-light">{{$book->title}}</a> --}}
+                                    
+                                    @if ($author->bookByAuthor  !== null)
+                                        @if  ( $author->bookByAuthor->count()) 
+                                        <small>Author has {{$author->bookByAuthor->count()}} books: </small>
+                                        <a href="{{route('book.show',[$book])}}" class="btn btn-light">{{$book->title}}</a>
+                                        {{-- <a href="{{route('book.show',$author->bookByAuthor->get())}}" class="btn btn-light">{{$book->title}}</a> --}}
+                                        @else 
+                                        <small>Currently has no books</small>
+                                        @endif
                                     @else 
                                     <small>Currently has no books</small>
                                     @endif                                
