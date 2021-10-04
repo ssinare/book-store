@@ -41,7 +41,7 @@
                             {{-- <div><a href="{{route('comment.create',[$comment])}}" class="btn btn-secondary m-2">Add comment</a></a></div> --}}
                             <div>  <b>Books: </b> 
                             @foreach ($author->authorBooks as $book) 
-                                   <li><a href="{{route('book.show',[$book])}}" class="btn btn-secondary m-2">{{$book->title}}, {{$book->year}}</a></li>                           
+                                   <ul><a href="{{route('book.show',[$book])}}" class="btn btn-secondary m-2">{{$book->title}}, {{$book->year}}</a></ul>                           
                             @endforeach            
                             </div> 
                         </div>

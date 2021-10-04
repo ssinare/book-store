@@ -11,7 +11,7 @@
                         <form action="{{route('book.update', $book)}}" method="post">                                                  
                              <div class="form-group" style="margin: 10px; font-style: italic">
                                 <label>   Title: </label>
-                                <input type="text" name="book_title" class="form-control" value="{{old('book_title', , $book->title)}}">
+                                <input type="text" name="book_title" class="form-control" value="{{old('book_title', $book->title)}}">
                                 <small class="form-text text-muted">   Update book title</small>
                             </div>               
                             <div class="form-group" style="margin: 10px; font-style: italic">

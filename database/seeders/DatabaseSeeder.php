@@ -35,28 +35,28 @@ class DatabaseSeeder extends Seeder
         $booksCount = 200;
         foreach (range(1, $booksCount) as $_) {
             DB::table('books')->insert([
-                'title' => $faker->word(rand(2, 5)),
-                'about' => $faker->realText(rand(10, 20)),
+                'title' => $faker->realText(rand(15, 60)),
+                'about' => $faker->realText(rand(15, 200)),
                 'year' => rand(1999, 2021),
                 'author_id' => rand(1, 100),
 
             ]);
         }
 
-        $commentsCount = 200;
 
-        foreach (range(1, $commentsCount) as $_) {
+
+        foreach (range(1, 200) as $_) {
             DB::table('comments')->insert([
                 'user' => $faker->userName(),
                 'date' => $faker->dateTimeThisDecade($max = 'now', $timezone = null),
                 'comment' => $faker->realText(rand(10, 200)),
+                'book_id' => rand(1, 200),
                 'author_id' => null,
-                'book_id' => rand(1, 200)
 
             ]);
         }
 
-        foreach (range(1, $commentsCount) as $_) {
+        foreach (range(201, 400) as $_) {
             DB::table('comments')->insert([
                 'user' => $faker->firstName(),
                 'date' => $faker->dateTimeThisDecade($max = 'now', $timezone = null),

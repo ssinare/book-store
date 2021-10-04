@@ -66,7 +66,7 @@ class BookController extends Controller
             [
                 'book_title' => ['required', 'min:3', 'max:60'],
                 'book_about' => ['required', 'min:3', 'max:200'],
-                'book_year' => ['required', 'min:1999', 'max:2021'],
+                'book_year' => ['required', 4],
                 'author_id' => ['integer', 'min:1', 'max:10000'],
             ]
         );
@@ -135,7 +135,7 @@ class BookController extends Controller
             [
                 'book_title' => ['required', 'min:3', 'max:60'],
                 'book_about' => ['required', 'min:3', 'max:200'],
-                'book_year' => ['required', 'min:1999', 'max:2021'],
+                'book_year' => ['required'],
                 'author_id' => ['integer', 'min:1', 'max:10000'],
             ]
         );
