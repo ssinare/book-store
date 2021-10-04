@@ -97,6 +97,7 @@ class BookController extends Controller
     {
         $authors = Author::orderBy('surname', 'asc')->get();
         $comments = Comment::orderBy('date', 'desc')->get();
+
         return view('book.show', [
             'book' => $book,
             'book_title' => $book->title,
