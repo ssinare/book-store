@@ -51,17 +51,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-window
-$(function () {
-    var $posts = $("#posts");
-    var $ul = $("ul.pagination");
-    $ul.hide(); // Prevent the default Laravel paginator from showing, but we need the links...
 
-    $(".see-more").click(function () {
-        $.get($ul.find("a[rel='next']").attr("href"), function (response) {
-            $posts.append(
-                $(response).find("#posts").html()
-            );
-        });
-    });
-});
+
+// window
+// $(function () {
+//     var $posts = $("#posts");
+//     var $ul = $("ul.pagination");
+//     $ul.hide(); // Prevent the default Laravel paginator from showing, but we need the links...
+
+//     $(".see-more").click(function () {
+//         $.get($ul.find("a[rel='next']").attr("href"), function (response) {
+//             $posts.append(
+//                 $(response).find("#posts").html()
+//             );
+//         });
+//     });
+// });
+
+// window
+// $(function () {
+//     var $comments = $("#comments");
+//     var $ul = $("ul.pagination");
+//     $ul.hide(); // Prevent the default Laravel paginator from showing, but we need the links...
+
+//     $(".see-more").click(function () {
+//         $.get($ul.find("a[rel='next']").attr("href"), function (response) {
+//             $comments.append(
+//                 $(response).find("#comments").html()
+//             );
+//         });
+//     });
+// });

@@ -36,8 +36,12 @@
                                                 </li> 
                                             </ul>                             
                                         @endforeach 
-                                        <div><a href="{{route('comment.create',[$comment])}}" class="btn btn-light m-2">Add new</a></div>  
+                                        
                                     </div> 
+                                    <div>
+                                        @comments(['model' => $author])
+                                    </div>
+                                    
                                     <form action="{{route('author.show',[$author])}}" method="post">                       
                                         <div class="form-group" style="margin: 10px; font-style: italic">
                                             <label>Name:</label>
@@ -58,7 +62,7 @@
                                 {{-- <div class="mb-3">{{$comments->links()}}</div>  --}}
          
                             </div>
-                            <div><a href="{{route('comment.create',[$comment])}}" class="btn btn-secondary m-2">Add comment</a></a></div>
+                            {{-- <div><a href="{{route('comment.create',[$comment])}}" class="btn btn-secondary m-2">Add comment</a></a></div> --}}
                              <div style="margin: 10px; font-style: italic"> 
                                     <b>Books: </b> 
                             @foreach ($author->authorBooks as $book) 

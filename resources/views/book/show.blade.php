@@ -34,8 +34,30 @@
                                                 </li> 
                                                 </ul>                             
                                         @endforeach 
-                                     <div><a href="{{route('comment.create',[$comment])}}" class="btn btn-light m-2">Add new</a></div>  
-                                    </div>            
+                                        <div><a href="" class="btn btn-light m-2">Load more</a></div> 
+                                        <div><a href="{{route('comment.create',[$comment])}}" class="btn btn-light m-2">Add new</a></div>
+                                       
+                                    </div>
+                                    <div>
+                                        @comments(['model' => $book]) 
+                                    </div>
+                                    
+                                     <form action="{{route('book.show',[$book])}}" method="post">                       
+                                        <div class="form-group" style="margin: 10px; font-style: italic">
+                                            <label>Name:</label>
+                                            <input type="text" name="comment_name" class="form-control" value="{{old('comment_name')}}">
+                                            <small class="form-text text-muted">   Enter your name</small>
+                                        </div>
+                                        <div class="form-group" style="margin: 10px; font-style: italic">
+                                            <label>Comment:</label>
+                                            <input type="text" name="comment_comment" class="form-control" value="{{old('comment_comment')}}">
+                                            <small class="form-text text-muted">   Enter comment</small>
+                                        </div>
+                                        <div class="form-group" style="margin: 10px">                         
+                                            <button class="btn btn-light" type="submit" >Save</button>                            
+                                        </div> 
+                                        @csrf
+                                    </form>              
                                 </div> 
                                 {{-- <div class="mb-3">{{$comments->links()}}</div>  --}}
                                                       

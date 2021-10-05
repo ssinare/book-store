@@ -5,10 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Author;
+use Laravelista\Comments\Commentable;
+
 
 class Book extends Model
 {
-    use HasFactory;
+    use HasFactory, Commentable;
+
+    //     @comments([
+    //     'model' => $book,
+    //     'approved' => true
+    // ])
 
     public function bookByAuthor()
     {

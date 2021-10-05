@@ -11,7 +11,7 @@ use PDF;
 
 class BookController extends Controller
 {
-    const RESULTS_IN_PAGE = 6;
+    const RESULTS_IN_PAGE = 5;
 
     // public function __construct()
     // {
