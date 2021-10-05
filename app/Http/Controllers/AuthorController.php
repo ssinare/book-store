@@ -23,7 +23,7 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        $authors = Author::orderBy('name', 'asc')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
+        $authors = Author::orderBy('surname', 'asc')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
         $books = Book::orderBy('title', 'asc')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
         $comments = Comment::orderBy('date', 'desc')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
 

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('footer-content')
 <div class="container">
@@ -40,4 +40,5 @@
 @endsection
 
 
-@section('content') Comments List @endsection
+@section('content') Comments List @endsection --}}
+

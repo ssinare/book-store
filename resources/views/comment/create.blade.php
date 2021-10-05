@@ -1,3 +1,4 @@
+{{-- @extends('book.show') --}}
 @extends('layouts.app')
 
 @section('footer-content')

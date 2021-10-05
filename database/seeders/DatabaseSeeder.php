@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
 
 
 
-        foreach (range(1, 200) as $_) {
+        foreach (range(1, 600) as $_) {
             DB::table('comments')->insert([
                 'user' => $faker->userName(),
                 'date' => $faker->dateTimeThisDecade($max = 'now', $timezone = null),
@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        foreach (range(201, 400) as $_) {
+        foreach (range(601, 900) as $_) {
             DB::table('comments')->insert([
                 'user' => $faker->firstName(),
                 'date' => $faker->dateTimeThisDecade($max = 'now', $timezone = null),

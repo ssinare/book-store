@@ -11,7 +11,6 @@ use Validator;
 
 class CommentController extends Controller
 {
-    const RESULTS_IN_PAGE = 5;
 
     // public function __construct()
     // {
@@ -24,23 +23,26 @@ class CommentController extends Controller
      */
     public function index(Request $request)
     {
-        // $books = Book::orderBy('title', 'asc')->get();
-        // $authors = Author::orderBy('surname', 'asc')->get();
-        // $comments = Comment::orderBy('date', 'desc')->get();
-        // if ($request->filter && 'book' == $request->filter) {
-        //     $comments = Comment::where('book_id', $request->book_id)->orderBy('date', 'desc')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
-        // } elseif ($request->filter && 'author' == $request->filter) {
-        //     $comments = Comment::where('author_id', $request->author_id)->orderBy('date', 'desc')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
-        // }
+        $books = Book::orderBy('title', 'asc')->get();
+        $authors = Author::orderBy('surname', 'asc')->get();
+        if ($request->book_id == null) {
+            $comments = Comment::where('author_id', $request->author_id)
+                ->orderBy('date', 'desc')
+                ->paginate(5);
+        } else {
+            $comments = Comment::where('book_id', $request->book_id)
+                ->orderBy('date', 'desc')
+                ->paginate(5);
+        }
 
-        // return view('comment.index', [
-        //     'comments' => $comments,
-        //     'sortDirection' => $request->sort_dir ?? 'asc',
-        //     'books' => $books,
-        //     'book_id' => $request->book_id ?? 'null',
-        //     'authors' => $authors,
-        //     'author_id' => $request->author_id ?? 'null',
-        // ]);
+        return view('comment.index', [
+            'comments' => $comments,
+            'sortDirection' => $request->sort_dir ?? 'desc',
+            'books' => $books,
+            'book_id' => $request->book_id ?? 'null',
+            'authors' => $authors,
+            'author_id' => $request->author_id ?? 'null',
+        ]);
     }
 
     /**
@@ -50,16 +52,15 @@ class CommentController extends Controller
      */
     public function create(Request $request)
     {
-        echo ($request->book_id);
-        echo ($request->author_id);
+        $books = Book::orderBy('title', 'asc')->get();
+        $authors = Author::orderBy('surname', 'asc')->get();
 
-        // return view('comment.create', [
-        //     'books' => $books,
-        //     'book_id' => $request->book_id ?? 'null',
-
-        //     'authors' => $authors,
-        //     'author_id' => $request->author_id ?? 'null',
-        // ]);
+        return view('comment.create', [
+            'books' => $books,
+            'book_id' => $request->book_id ?? 'null',
+            'authors' => $authors,
+            'author_id' => $request->author_id ?? 'null',
+        ]);
     }
 
     /**
@@ -106,8 +107,6 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
-        // $books = Book::orderBy('date')->get();
-        // return view('comment.edit', ['comment' => $comment, 'books' => $books]);
     }
 
     /**

@@ -27,8 +27,6 @@
                         </div>
                     </fieldset>
                 </form>
-
-
                <div class="card-body">
                    <div class="mb-3">{{$books->links()}}</div>
                    <ul class="list-group">
@@ -38,15 +36,12 @@
                             <div class="list-block_content"style="margin: 10px; font-style: italic">
                                 <div><span>Book: <b>{{$book->title}}</b> </span> 
                                      <div>Publish year:<b> {{$book->year}}</b></div>
-                                    <div>Author: <b> {{$book->bookByAuthor->name}} {{$book->bookByAuthor->surname}}</b></div>
-                                   
+                                    <div>Author: <b> {{$book->bookByAuthor->name}} {{$book->bookByAuthor->surname}}</b></div>                
                                 </div>
-                                
-                                <small>About: <i> {{$book->about}} </i></small>  
                             </div>
                             <div class="list-block_button">
-                                <a href="{{route('book.edit', $book)}}" class="btn btn-light">Edit</a>
-                                <a href="{{route('book.show',[$book])}}" class="btn btn-light">Show</a>  
+                            <div><a href="{{route('book.edit', $book)}}" class="btn btn-light">Edit</a></div>    
+                             <div><a href="{{route('book.show',[$book])}}" class="btn btn-light">Show</a> </div>    
                                 <form method="POST" action="{{route('book.destroy', $book)}}">
                                 <button type="submit" class="btn btn-secondary" >Delete</button>
                                 @csrf

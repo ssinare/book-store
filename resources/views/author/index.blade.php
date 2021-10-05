@@ -14,28 +14,31 @@
                         <li class="list-group-item">
                             <div class="list-block">
                                 <div class="list-block_content" style="margin: 10px; font-style: italic">
-                                    <div> <b>{{$author->name}} {{$author->surname}}</b></div> 
-                                    <div><span>Author about: {{$author->about}}</span></div>
-                                    
-                                    @if ($author->bookByAuthor  !== null)
-                                        @if  ( $author->bookByAuthor->count()) 
-                                        <small>Author has {{$author->bookByAuthor->count()}} books: </small>
-                                        <a href="{{route('book.show',[$book])}}" class="btn btn-light">{{$book->title}}</a>
-                                        {{-- <a href="{{route('book.show',$author->bookByAuthor->get())}}" class="btn btn-light">{{$book->title}}</a> --}}
+                                    <div>
+                                    <div> <b>{{$author->name}} {{$author->surname}}</b></div>                                 
+                                    @if ($author->authorBooks  !== null)
+                                        @if  ( $author->authorBooks->count()) 
+                                        <small>Author has {{$author->authorBooks->count()}} books: </small>
+                                        @foreach($author->authorBooks as $book)
+                                        <ul><a href="{{route('book.show',[$book])}}" class=" btn btn-secondary">{{$book->title}}</a></ul>
+                                        @endforeach 
                                         @else 
                                         <small>Currently has no books</small>
                                         @endif
                                     @else 
                                     <small>Currently has no books</small>
-                                    @endif                                
+                                    @endif 
+                                    </div>                               
                                 </div>
                                 <div class="list-block_button">
-                                    <a href="{{route('author.edit',[$author])}}" class="btn btn-light">Edit</a>
-                                    <a href="{{route('author.show',[$author])}}" class="btn btn-light">Show</a>                             
-                                    <form method="POST" action="{{route('author.destroy', [$author])}}">
+                                    <div><a href="{{route('author.edit',[$author])}}" class="btn btn-light">Edit</a></div>
+                                    <div><a href="{{route('author.show',[$author])}}" class="btn btn-light">Show</a></div>                             
+                                    <div>
+                                        <form method="POST" action="{{route('author.destroy', [$author])}}">
                                         <button type="submit" class="btn btn-secondary" >Delete</button>
-                                    @csrf
-                                    </form>
+                                        @csrf
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </li>

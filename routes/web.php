@@ -52,6 +52,8 @@ Route::group(['prefix' => 'comments'], function () {
     Route::get('show/{comment}', [CommentController::class, 'show'])->name('comment.show');
 });
 
+Route::get('load-data', [LoadMoreDataController::class, 'index']);
+Route::post('load-data', [LoadMoreDataController::class, 'loadMoreData'])->name('load-data');
 
 
 

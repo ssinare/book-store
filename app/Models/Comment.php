@@ -9,6 +9,10 @@ use App\Models\Book;
 
 class Comment extends Model
 {
+    protected $fillable = ['user', 'date', 'comment', 'author_id', 'book_id'];
+
+
+
     use HasFactory;
 
     public function commentByAuthor()
