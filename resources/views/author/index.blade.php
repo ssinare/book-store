@@ -17,8 +17,12 @@
                                     <div>
                                     <div> <b>{{$author->name}} {{$author->surname}}</b></div>                                 
                                     @if ($author->authorBooks  !== null)
-                                        @if  ( $author->authorBooks->count()) 
+                                        @if  ( $author->authorBooks->count())
+                                            @if  ( $author->authorBooks->count() < 2) 
+                                        <small>Author has {{$author->authorBooks->count()}} book: </small>
+                                            @else 
                                         <small>Author has {{$author->authorBooks->count()}} books: </small>
+                                            @endif
                                         @foreach($author->authorBooks as $book)
                                         <ul><a href="{{route('book.show',[$book])}}" class=" btn btn-secondary">{{$book->title}}</a></ul>
                                         @endforeach 

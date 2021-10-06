@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Comment;
 use Validator;
+use PDF;
 
 class AuthorController extends Controller
 {

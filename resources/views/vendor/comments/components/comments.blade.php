@@ -12,7 +12,7 @@
 
 <div>
     @php
-        $comments = $comments->sortBy('created_at');
+        $comments = $comments->sortBy('created_at', 'desc');
         $perPage = 3;
         if (isset($perPage)) {
             $page = request()->query('page', 1) - 1;

@@ -7,8 +7,12 @@
            <div class="card">
                <div class="card-header">  
                     <div>Author: <h5>{{$author->name}} {{$author->surname}}</h5></div>                   
-                     <div> Author has:<h6> {{$author->authorBooks->count()}} books </h6></div>        
-                </div>
+                    @if  ( $author->authorBooks->count() === 1) 
+                        <div> Author has:<h6> {{$author->authorBooks->count()}} book </h6></div>
+                    @else 
+                        <div> Author has:<h6> {{$author->authorBooks->count()}} books </h6></div>
+                    @endif
+                    </div>
                 <div class="card-body">
                     <div class="list-block">
                         <div class="author-container">
@@ -24,55 +28,20 @@
                                 </div>
 
                                 <div style="readers-container; margin: 10px; font-style: italic">  
-                                    <b>Readers comments: </b>
+                                    <div style="margin-bottom: 10px"><b>Readers comments: </b></div>
                                     
-
-                                    <div class="readers-container__comments">                             
-                                        {{-- @foreach ($author->authorComments as $comment)                             
-                                            <ul style=" margin: 10px; padding: 10px;">
-                                                <li> 
-                                                <div>{{$comment->date}} {{$comment->user}}</div>
-                                                    <div>{{$comment->comment}}</div> 
-                                                </li> 
-                                            </ul>                             
-                                        @endforeach  --}}
-                                        
-                                    </div> 
-                                    <div>
+                                    <div >                                                                  
                                         @comments(['model' => $author])
-                                    </div>
-                                    
-                                    <form action="{{route('author.show',[$author])}}" method="post">                       
-                                        <div class="form-group" style="margin: 10px; font-style: italic">
-                                            <label>Name:</label>
-                                            <input type="text" name="comment_name" class="form-control" value="{{old('comment_name')}}">
-                                            <small class="form-text text-muted">   Enter your name</small>
-                                        </div>
-                                        <div class="form-group" style="margin: 10px; font-style: italic">
-                                            <label>Comment:</label>
-                                            <input type="text" name="comment_comment" class="form-control" value="{{old('comment_comment')}}">
-                                            <small class="form-text text-muted">   Enter comment</small>
-                                        </div>
-                                        <div class="form-group" style="margin: 10px">                         
-                                            <button class="btn btn-light" type="submit" >Save</button>                            
-                                        </div> 
-                                        @csrf
-                                    </form>           
-                                </div> 
-                                {{-- <div class="mb-3">{{$comments->links()}}</div>  --}}
-         
+                                    </div>                                         
+                                </div>         
                             </div>
-                            {{-- <div><a href="{{route('comment.create',[$comment])}}" class="btn btn-secondary m-2">Add comment</a></a></div> --}}
-                             <div style="margin: 10px; font-style: italic"> 
+                            <div style="margin: 10px; font-style: italic"> 
                                     <b>Books: </b> 
                             @foreach ($author->authorBooks as $book) 
                                    <ul><a href="{{route('book.show',[$book])}}" class="btn btn-secondary m-2">{{$book->title}}, {{$book->year}}</a></ul>                           
                             @endforeach            
-                            </div> 
-
-                            
-                        </div>
-                        
+                            </div>                             
+                        </div>                        
                     </div> 
                 </div>                
            </div>
@@ -81,6 +50,6 @@
 </div>
 
 @endsection
-@yield('footer-content')
+
 
 @section('title') {{$author->name}} {{$author->surname}} @endsection
