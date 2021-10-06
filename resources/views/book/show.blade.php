@@ -26,16 +26,16 @@
                                 <div style="readers-container; margin: 10px; font-style: italic">  
                                     <b>Readers comments: </b>  
                                     <div class="readers-container__comments">                             
-                                        @foreach ($book->bookComments as $comment)                            
+                                        {{-- @foreach ($book->bookComments as $comment)                            
                                             <ul style=" margin: 10px; padding: 10px;">
                                                 <li> 
                                                 <div>{{$comment->date}} {{$comment->user}}</div>
                                                     <div>{{$comment->comment}}</div> 
                                                 </li> 
                                                 </ul>                             
-                                        @endforeach 
+                                        @endforeach  --}}
                                         <div><a href="" class="btn btn-light m-2">Load more</a></div> 
-                                        <div><a href="{{route('comment.create',[$comment])}}" class="btn btn-light m-2">Add new</a></div>
+                                        {{-- <div><a href="{{route('comment.create',[$comment])}}" class="btn btn-light m-2">Add new</a></div> --}}
                                        
                                     </div>
                                     <div>

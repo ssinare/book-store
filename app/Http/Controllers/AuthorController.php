@@ -25,14 +25,14 @@ class AuthorController extends Controller
     {
         $authors = Author::orderBy('surname', 'asc')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
         $books = Book::orderBy('title', 'asc')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
-        $comments = Comment::orderBy('date', 'desc')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
+        // $comments = Comment::orderBy('date', 'desc')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
 
         return view(
             'author.index',
             [
                 'authors' => $authors,
                 'books' => $books,
-                'comments' => $comments
+                // 'comments' => $comments
             ]
         );
     }
@@ -88,12 +88,12 @@ class AuthorController extends Controller
     public function show(Author $author)
     {
         $books = Book::orderBy('title')->get();
-        $comments = Comment::orderBy('date', 'desc')->get();
+        // $comments = Comment::orderBy('date', 'desc')->get();
         return view('author.show', [
             'author' => $author,
             'author_name' => $author->name,
             'author_surname' => $author->surname,
-            'comments' => $comments,
+            // 'comments' => $comments,
             'books' => $books,
         ]);
     }

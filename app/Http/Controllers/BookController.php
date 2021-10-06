@@ -96,13 +96,13 @@ class BookController extends Controller
     public function show(Book $book)
     {
 
-        $comments = Comment::orderBy('date', 'asc')->paginate(3);
+        // $comments = Comment::orderBy('date', 'asc')->paginate(3);
 
         return view('book.show', [
             'book' => $book,
             'book_title' => $book->title,
             'book_about' => $book->about,
-            'comments' => $comments,
+            // 'comments' => $comments,
 
 
 
@@ -119,8 +119,8 @@ class BookController extends Controller
     public function edit(Book $book)
     {
         $authors = Author::orderBy('surname')->get();
-        $comments = Comment::orderBy('date', 'desc')->get();
-        return view('book.edit', ['book' => $book, 'authors' => $authors, 'comments' => $comments]);
+        // $comments = Comment::orderBy('date', 'desc')->get();
+        return view('book.edit', ['book' => $book, 'authors' => $authors]);
     }
 
     /**

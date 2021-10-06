@@ -10089,3 +10089,20 @@ div.note-btn-group.btn-group {
 .readers-container ul {
   margin: 20px;
 }
+
+.btn-outline-success:focus {
+  border-color: none !important;
+  line-height: none !important;
+  color: none !important;
+}
+
+.btn-sm:focus, .btn-group-sm > .btn:focus {
+  padding: none !important;
+  font-size: none !important;
+  line-height: none !important;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}

@@ -46,7 +46,7 @@
                 </div>
                 <small class="form-text text-muted">@lang('comments::comments.markdown_cheatsheet', ['url' => 'https://help.github.com/articles/basic-writing-and-formatting-syntax'])</small>
             </div>
-            <button type="submit" class="btn btn-sm btn-outline-success text-uppercase">@lang('comments::comments.submit')</button>
+            <button type="submit" class="btn btn-light">@lang('comments::comments.submit')</button>
         </form>
     </div>
 </div>

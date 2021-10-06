@@ -62,6 +62,6 @@ Route::post('load-data', [LoadMoreDataController::class, 'loadMoreData'])->name(
 //Auth::routes(['register' => false]);
 
 
-//Auth::routes();
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

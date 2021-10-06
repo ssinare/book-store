@@ -28,14 +28,14 @@
                                     
 
                                     <div class="readers-container__comments">                             
-                                        @foreach ($author->authorComments as $comment)                             
+                                        {{-- @foreach ($author->authorComments as $comment)                             
                                             <ul style=" margin: 10px; padding: 10px;">
                                                 <li> 
                                                 <div>{{$comment->date}} {{$comment->user}}</div>
                                                     <div>{{$comment->comment}}</div> 
                                                 </li> 
                                             </ul>                             
-                                        @endforeach 
+                                        @endforeach  --}}
                                         
                                     </div> 
                                     <div>
