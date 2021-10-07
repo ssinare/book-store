@@ -59,6 +59,7 @@ class AuthorController extends Controller
                 'author_name' => ['required', 'min:3', 'max:60'],
                 'author_surname' => ['required', 'min:3', 'max:60'],
                 'author_about' => ['required', 'min:1', 'max:500'],
+                'author_photo' => ['sometimes', 'image'],
             ]
         );
 
@@ -71,12 +72,23 @@ class AuthorController extends Controller
         $author = new Author;
 
         $file = $request->file('author_photo');
-        $ext = $file->getClientOriginalExtension();
-        $name = rand(1000000, 9999999) . '_' . rand(1000000, 9999999);
-        $name = $name . '.' . $ext;
-        $destinationPath = public_path() . '/authors-img/'; //serverio kelias viduje, ne per naršyklę
-        $file->move($destinationPath, $name);
-        $author->photo = asset('/authors-img/' . $name);
+
+        if ($file) {
+            $ext = $file->getClientOriginalExtension();
+            $name = rand(1000000, 9999999) . '_' . rand(1000000, 9999999);
+            $name = $name . '.' . $ext;
+            $destinationPath = public_path() . '/authors-img/'; //serverio kelias viduje, ne per naršyklę
+            $file->move($destinationPath, $name);
+            $oldPhoto = $author->photo ?? ' ';
+            $author->photo = asset('/authors-img/' . $name);
+
+            // $img = Image::make($destinationPath . $name);
+            // $img->gamma(5.6)->flip('v');
+            // $img->save($destinationPath . $name);
+
+
+
+        }
 
         $author->name = $request->author_name;
         $author->surname = $request->author_surname;
@@ -131,6 +143,7 @@ class AuthorController extends Controller
                 'author_name' => ['required', 'min:3', 'max:60'],
                 'author_surname' => ['required', 'min:3', 'max:60'],
                 'author_about' => ['required', 'min:1', 'max:500'],
+                'author_photo' => ['sometimes', 'image'],
             ]
         );
 
@@ -138,6 +151,40 @@ class AuthorController extends Controller
             $request->flash();
             return redirect()->back()->withErrors($validator);
         }
+
+
+        $file = $request->file('author_photo');
+
+        if ($file) {
+            $ext = $file->getClientOriginalExtension();
+            $name = rand(1000000, 9999999) . '_' . rand(1000000, 9999999);
+            $name = $name . '.' . $ext;
+            $destinationPath = public_path() . '/authors-img/'; //serverio kelias viduje, ne per naršyklę
+            $file->move($destinationPath, $name);
+            $oldPhoto = $author->photo ?? ' ';
+            $author->photo = asset('/authors-img/' . $name);
+
+            $oldName = explode('/', $oldPhoto);
+            $oldName = array_pop($oldName);
+            if (file_exists($destinationPath . $oldName)) {
+                unlink($destinationPath . $oldName);
+            }
+        }
+
+
+        if ($request->author_photo_delete) {
+            $destinationPath = public_path() . '/authors-img/';
+            $oldPhoto = $author->photo ?? ' ';
+            $author->photo = null;
+            $oldName = explode('/', $oldPhoto);
+            $oldName = array_pop($oldName);
+            if (file_exists($destinationPath . $oldName)) {
+                unlink($destinationPath . $oldName);
+            }
+        }
+
+
+
         $author->name = $request->author_name;
         $author->surname = $request->author_surname;
         $author->about = $request->author_about;
@@ -155,6 +202,13 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
+        $destinationPath = public_path() . '/authors-img/';
+        $oldPhoto = $author->photo ?? ' ';
+        $oldName = explode('/', $oldPhoto);
+        $oldName = array_pop($oldName);
+        if (file_exists($destinationPath . $oldName)) {
+            unlink($destinationPath . $oldName);
+        }
         if ($author->authorBooks->count()) {
             return redirect()
                 ->route('author.index')
