@@ -5,11 +5,19 @@
    <div class="row justify-content-center">
        <div class="col-md-9">
            <div class="card">
-               <div class="card-header">  
-                    <div>Book:<h5> <b>{{$book->title}}</b></h5></div> 
-                    <div> Author:<h6> <b>{{$book->bookByAuthor->name}} {{$book->bookByAuthor->surname}}</b> </h6></div>        
-                     <div>Publish year: {{$book->year}}</div> 
+               <div class="card-header_show">  
+                    <div class="card-header_heading">
+                        <div>Book:<h5> <b>{{$book->title}}</b></h5></div> 
+                        <div> Author:<h6> <b>{{$book->bookByAuthor->name}} {{$book->bookByAuthor->surname}}</b> </h6></div>        
+                        <div>Publish year: {{$book->year}}</div>                    
+                    </div> 
+                    <div class="card-header_heading">   
+                        <div class="img" style="margin: 10px; font-style: italic">
+                                            <img src="{{$book->photo}}">                    
+                        </div>                
+                    </div>     
                 </div>
+                
                 <div class="card-body" >
                     <div class="list-block">
                         <div class="book-container">

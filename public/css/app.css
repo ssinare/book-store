@@ -10002,12 +10002,36 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.card-header_show {
+  display: inline-flex !important;
+  background-color: rgba(238, 235, 230, 0.438);
+  color: black;
+  font-weight: 200;
+  font-style: italic;
+  box-shadow: 1px 1px 1px 1px grey;
+}
+.card-header_show_heading {
+  width: 50%;
+  float: left !important;
+  padding: 20px;
+}
+
 .card-header {
   background-color: rgba(238, 235, 230, 0.438);
   color: black;
   font-weight: 200;
   font-style: italic;
   box-shadow: 1px 1px 1px 1px grey;
+}
+.card-header_heading {
+  width: 50%;
+  float: left !important;
+  padding: 20px;
+}
+
+.card-header_heading.img {
+  margin: 10px;
+  justify-content: center;
 }
 
 .card-body {
@@ -10046,6 +10070,9 @@ h3 {
   flex-direction: row;
 }
 .list-block_img img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   height: 150px;
   width: auto;
 }
@@ -10096,4 +10123,8 @@ div.note-btn-group.btn-group {
 }
 .readers-container ul {
   margin: 20px;
+}
+.readers-container .img img {
+  height: 150px;
+  width: auto;
 }

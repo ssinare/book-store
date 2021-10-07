@@ -1,9 +1,31 @@
+.card-header_show {
+    display: inline-flex !important;
+    background-color: rgba(238, 235, 230, 0.438);
+    color: black;
+    font-weight: 200;
+    font-style: italic;
+    box-shadow: 1px 1px 1px 1px grey;
+    &_heading {
+        width: 50%;
+        float: left !important;
+        padding: 20px;
+    }
+}
 .card-header {
     background-color: rgba(238, 235, 230, 0.438);
     color: black;
     font-weight: 200;
     font-style: italic;
     box-shadow: 1px 1px 1px 1px grey;
+    &_heading {
+        width: 50%;
+        float: left !important;
+        padding: 20px;
+    }
+}
+.card-header_heading.img {
+    margin: 10px;
+    justify-content: center;
 }
 .card-body {
     box-shadow: 1px 1px 1px 1px grey;
@@ -42,6 +64,10 @@
     }
     &_img {
         img {
+            display: block;
+
+            margin-left: auto;
+            margin-right: auto;
             height: 150px;
             width: auto;
         }
@@ -91,5 +117,11 @@ div.note-btn-group.btn-group {
     }
     ul {
         margin: 20px;
+    }
+    .img {
+        img {
+            height: 150px;
+            width: auto;
+        }
     }
 }

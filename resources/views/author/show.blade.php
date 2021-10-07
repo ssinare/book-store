@@ -5,17 +5,21 @@
    <div class="row justify-content-center">
        <div class="col-md-9">
            <div class="card">
-               <div class="card-header">  
-                    <div>Author: <h5>{{$author->name}} {{$author->surname}}</h5></div>                   
+               <div class="card-header_show">  
+                    <div class="card-header_heading">
+                        <div>Author: <h5>{{$author->name}} {{$author->surname}}</h5></div>                   
                     @if  ( $author->authorBooks->count() === 1) 
                         <div> Author has:<h6> {{$author->authorBooks->count()}} book </h6></div>
                     @else 
                         <div> Author has:<h6> {{$author->authorBooks->count()}} books </h6></div>
                     @endif
+                    </div> 
+                    <div class="card-header_heading">   
+                    <div class="img" style="margin: 10px; font-style: italic">
+                                        <img src="{{$author->photo}}">                    
+                    </div>                
                     </div>
-                    <div class="list-block_img" style="margin: 10px; font-style: italic">
-                                    <img src="{{$author->photo}}">
-                    </div>
+                </div>
                 <div class="card-body">
                     <div class="list-block">
                         <div class="author-container">
