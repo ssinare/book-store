@@ -9,7 +9,7 @@ use App\Models\Author;
 use Validator;
 
 
-class CommentController extends Controller
+class LoadMoreDataController extends Controller
 {
 
     // public function __construct()

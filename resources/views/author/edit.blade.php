@@ -24,6 +24,11 @@
                                 <textarea type="text" name="author_about" id="summernote" class="form-control" >{{old('author_about', $author->about)}}</textarea>
                                 <small class="form-text text-muted">   Edit info about the author</small>
                             </div>
+                             <div class="form-group" style="margin: 10px; font-style: italic">
+                                <label>   Photo: </label>
+                                <input type="file" name="author_photo" class="form-control">
+                                <small class="form-text text-muted">   Author's photo</small>
+                            </div>
                         
                         <div class="form-group" style="margin: 10px">                         
                             <button class="btn btn-light" type="submit" >Update Author</button>                            
