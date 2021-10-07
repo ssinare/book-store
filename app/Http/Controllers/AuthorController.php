@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Author;
 use Illuminate\Http\Request;
 use App\Models\Book;
-use App\Models\Comment;
 use Validator;
 use PDF;
 
@@ -26,14 +25,12 @@ class AuthorController extends Controller
     {
         $authors = Author::orderBy('surname', 'asc')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
         $books = Book::orderBy('title', 'asc')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
-        // $comments = Comment::orderBy('date', 'desc')->paginate(self::RESULTS_IN_PAGE)->withQueryString();
 
         return view(
             'author.index',
             [
                 'authors' => $authors,
                 'books' => $books,
-                // 'comments' => $comments
             ]
         );
     }
@@ -61,7 +58,7 @@ class AuthorController extends Controller
             [
                 'author_name' => ['required', 'min:3', 'max:60'],
                 'author_surname' => ['required', 'min:3', 'max:60'],
-                'author_about' => ['required', 'min:1', 'max:200'],
+                'author_about' => ['required', 'min:1', 'max:500'],
             ]
         );
 
@@ -70,7 +67,17 @@ class AuthorController extends Controller
             $request->flash();
             return redirect()->back()->withErrors($validator);
         }
+
         $author = new Author;
+
+        $file = $request->file('author_photo');
+        $ext = $file->getClientOriginalExtension();
+        $name = rand(1000000, 9999999) . '_' . rand(1000000, 9999999);
+        $name = $name . '.' . $ext;
+        $destinationPath = public_path() . '/authors-img/'; //serverio kelias viduje, ne per naršyklę
+        $file->move($destinationPath, $name);
+        $author->photo = asset('/authors-img/' . $name);
+
         $author->name = $request->author_name;
         $author->surname = $request->author_surname;
         $author->about = $request->author_about;
@@ -89,12 +96,10 @@ class AuthorController extends Controller
     public function show(Author $author)
     {
         $books = Book::orderBy('title')->get();
-        // $comments = Comment::orderBy('date', 'desc')->get();
         return view('author.show', [
             'author' => $author,
             'author_name' => $author->name,
             'author_surname' => $author->surname,
-            // 'comments' => $comments,
             'books' => $books,
         ]);
     }
@@ -125,7 +130,7 @@ class AuthorController extends Controller
             [
                 'author_name' => ['required', 'min:3', 'max:60'],
                 'author_surname' => ['required', 'min:3', 'max:60'],
-                'author_about' => ['required', 'min:1', 'max:200'],
+                'author_about' => ['required', 'min:1', 'max:500'],
             ]
         );
 

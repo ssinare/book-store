@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CommentController;
+//use Laravelista\Comments\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,22 +40,26 @@ Route::group(['prefix' => 'books'], function () {
     Route::post('update/{book}', [BookController::class, 'update'])->name('book.update');
     Route::post('delete/{book}', [BookController::class, 'destroy'])->name('book.destroy');
     Route::get('show/{book}', [BookController::class, 'show'])->name('book.show');
-    Route::get('pdf/{book}', [BookController::class, 'pdf'])->name('book.pdf');
 });
 
 Route::group(['prefix' => 'comments'], function () {
-    Route::get('', [CommentController::class, 'index'])->name('comment.index');
-    Route::get('create', [CommentController::class, 'create'])->name('comment.create');
-    Route::post('store', [CommentController::class, 'store'])->name('comment.store');
-    Route::get('edit/{comment}', [CommentController::class, 'edit'])->name('comment.edit');
-    Route::post('update/{comment}', [CommentController::class, 'update'])->name('comment.update');
-    Route::post('delete/{comment}', [CommentController::class, 'destroy'])->name('comment.destroy');
-    Route::get('show/{comment}', [CommentController::class, 'show'])->name('comment.show');
+    //     Route::get('', [CommentController::class, 'index'])->name('comment.index');
+    //     Route::get('create', [CommentController::class, 'create'])->name('comment.create');
+    //     Route::post('store', [CommentController::class, 'store'])->name('comment.store');
+    //     Route::get('edit/{comment}', [CommentController::class, 'edit'])->name('comment.edit');
+    //     Route::post('update/{comment}', [CommentController::class, 'update'])->name('comment.update');
+    //     Route::post('delete/{comment}', [CommentController::class, 'destroy'])->name('comment.destroy');
+    //     Route::get('show/{comment}', [CommentController::class, 'show'])->name('comment.show');
+
+    Route::post('comments', '\Laravelista\Comments\CommentController@store');
+    Route::delete('comments/{comment}', '\Laravelista\Comments\CommentController@destroy');
+    Route::put('comments/{comment}', '\Laravelista\Comments\CommentController@update');
+    Route::post('comments/{comment}', '\Laravelista\Comments\CommentController@reply');
+    Route::get('/livewire', [App\Http\Controllers\CommentController::class, 'livewire'])->name('livewire');
 });
 
 Route::get('load-data', [LoadMoreDataController::class, 'index']);
 Route::post('load-data', [LoadMoreDataController::class, 'loadMoreData'])->name('load-data');
-
 
 
 

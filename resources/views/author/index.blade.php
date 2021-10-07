@@ -12,7 +12,13 @@
                     <ul class="list-group">
                         @foreach ($authors as $author)
                         <li class="list-group-item">
-                            <div class="list-block">
+                            <div class="list-block" style="margin-top: 10px;">
+                                <div class="list-block_img" style="margin: 10px; font-style: italic">
+                                    @if ($author->photo)
+                                    <img src="{{$author->photo}}">
+                                    @else   <img src="{{asset('img/no-image.png')}}">
+                                    @endif
+                                </div>
                                 <div class="list-block_content" style="margin: 10px; font-style: italic">
                                     <div>
                                     <div> <b>{{$author->name}} {{$author->surname}}</b></div>                                 

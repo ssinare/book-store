@@ -2090,12 +2090,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); //window.
 
 window;
 document.addEventListener('DOMContentLoaded', function () {
-  if (document.querySelector('[name = comment_comment]')) {
-    $('[name = comment_comment]').summernote();
-  }
-});
-window;
-document.addEventListener('DOMContentLoaded', function () {
   if (document.querySelector('[name = book_about]')) {
     $('[name = book_about]').summernote();
   }

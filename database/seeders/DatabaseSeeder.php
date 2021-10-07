@@ -28,7 +28,8 @@ class DatabaseSeeder extends Seeder
             DB::table('authors')->insert([
                 'name' => $faker->firstName(),
                 'surname' => $faker->lastName(),
-                'about' => $faker->realText(rand(10, 200)),
+                'photo' => $faker->imageUrl(200, 100, 'author'),
+                'about' => $faker->realText(rand(10, 500)),
             ]);
         }
 
@@ -36,7 +37,8 @@ class DatabaseSeeder extends Seeder
         foreach (range(1, $booksCount) as $_) {
             DB::table('books')->insert([
                 'title' => $faker->realText(rand(15, 60)),
-                'about' => $faker->realText(rand(15, 200)),
+                'about' => $faker->realText(rand(15, 500)),
+                'photo' => $faker->imageUrl(200, 100, 'cats'),
                 'year' => rand(1999, 2021),
                 'author_id' => rand(1, 100),
 

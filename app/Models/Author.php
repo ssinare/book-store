@@ -18,9 +18,4 @@ class Author extends Model
     {
         return $this->hasMany(Book::class, 'author_id', 'id');
     }
-
-    public function authorComments()
-    {
-        return $this->hasMany(Comment::class, 'author_id', 'id');
-    }
 }

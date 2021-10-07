@@ -22,8 +22,4 @@ class Book extends Model
 
         return $this->belongsTo(Author::class, 'author_id', 'id');
     }
-    public function bookComments()
-    {
-        return $this->hasMany(Comment::class, 'book_id', 'id');
-    }
 }

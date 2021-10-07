@@ -8,7 +8,7 @@
                <div class="card-header">New Book</div>
                <div class="card-body">
                 <div class="list-block">
-                    <form action="{{route('book.store')}}" method="post">                      
+                    <form action="{{route('book.store')}}" method="post" enctype="multipart/form-data">                      
                         <div class="form-group" style="margin: 10px; font-style: italic">
                                 <label>   Title: </label>
                                 <input type="text" name="book_title" class="form-control" value="{{old('book_title')}}">

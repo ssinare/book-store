@@ -5,12 +5,12 @@
    <div class="row justify-content-center">
        <div class="col-md-8">
            <div class="card">
-               <div class="card-header">Books List</div>
-
-             <form action="{{route('book.index')}}" method="get">
+               <div class="card-header"> <b>Books List</b>   
+                <form action="{{route('book.index')}}" method="get">
                     <fieldset>
-                        <h6 style="padding-top: 10px; margin-left: 10px">Filter</h6>
+                        
                         <div class="list-block" >
+                            <h6 style="padding-top: 10px; margin-left: 10px">Filter</h6>
                             <div class="form-group" style="margin: 10px; font-style: italic">
                                 <select class="form-control" name="author_id">
                                 <option value="0" disabled selected>Select Author</option>
@@ -27,12 +27,21 @@
                         </div>
                     </fieldset>
                 </form>
+                </div>
                <div class="card-body">
                    <div class="mb-3">{{$books->links()}}</div>
                    <ul class="list-group">
                     @foreach ($books as $book)
                     <li class="list-group-item">
+                        
                         <div class="list-block" >
+                            <div class="list-block_img" style="margin: 10px; font-style: italic">
+                                @if ($book->photo)
+                                <img src="{{$book->photo}}">
+                                @else   
+                                <img src="{{asset('img/no-image.png')}}">
+                                @endif
+                            </div>
                             <div class="list-block_content"style="margin: 10px; font-style: italic">
                                 <div><span>Book: <b>{{$book->title}}</b> </span> 
                                      <div>Publish year:<b> {{$book->year}}</b></div>

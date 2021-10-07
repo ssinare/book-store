@@ -19,6 +19,7 @@
     align-items: center;
     color: black;
     box-shadow: 1px 1px 1px 1px grey;
+    flex-wrap: wrap;
 
     &_content {
         flex-direction: row;
@@ -38,6 +39,12 @@
     .list-block_button {
         display: flex;
         flex-direction: row;
+    }
+    &_img {
+        img {
+            height: 150px;
+            width: auto;
+        }
     }
 }
 
@@ -64,6 +71,9 @@ div.note-btn-group.btn-group {
 .book-container {
     display: inline-flex;
     align-items: center;
+    &_book {
+        width: 100%;
+    }
 }
 
 .readers-container {
@@ -82,18 +92,4 @@ div.note-btn-group.btn-group {
     ul {
         margin: 20px;
     }
-}
-.btn-outline-success:focus {
-    border-color: none !important;
-    line-height: none !important;
-    color: none !important;
-}
-.btn-sm:focus {
-    padding: none !important;
-    font-size: none !important;
-    line-height: none !important;
-}
-.btn:focus {
-    outline: none;
-    box-shadow: none;
 }

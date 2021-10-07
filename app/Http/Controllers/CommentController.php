@@ -8,6 +8,7 @@ use App\Models\Book;
 use App\Models\Author;
 use Validator;
 
+//use Laravelista\Comments\CommentController;
 
 class CommentController extends Controller
 {
@@ -21,28 +22,35 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function livewire()
+    {
+
+        return view(view: 'livewire');
+    }
+
+
     public function index(Request $request)
     {
-        $books = Book::orderBy('title', 'asc')->get();
-        $authors = Author::orderBy('surname', 'asc')->get();
-        if ($request->book_id == null) {
-            $comments = Comment::where('author_id', $request->author_id)
-                ->orderBy('date', 'desc')
-                ->paginate(5);
-        } else {
-            $comments = Comment::where('book_id', $request->book_id)
-                ->orderBy('date', 'desc')
-                ->paginate(5);
-        }
+        // $books = Book::orderBy('title', 'asc')->get();
+        // $authors = Author::orderBy('surname', 'asc')->get();
+        // if ($request->book_id == null) {
+        //     $comments = Comment::where('author_id', $request->author_id)
+        //         ->orderBy('date', 'desc')
+        //         ->paginate(5);
+        // } else {
+        //     $comments = Comment::where('book_id', $request->book_id)
+        //         ->orderBy('date', 'desc')
+        //         ->paginate(5);
+        // }
 
-        return view('comment.index', [
-            'comments' => $comments,
-            'sortDirection' => $request->sort_dir ?? 'desc',
-            'books' => $books,
-            'book_id' => $request->book_id ?? 'null',
-            'authors' => $authors,
-            'author_id' => $request->author_id ?? 'null',
-        ]);
+        // return view('comment.index', [
+        //     'comments' => $comments,
+        //     'sortDirection' => $request->sort_dir ?? 'desc',
+        //     'books' => $books,
+        //     'book_id' => $request->book_id ?? 'null',
+        //     'authors' => $authors,
+        //     'author_id' => $request->author_id ?? 'null',
+        // ]);
     }
 
     /**
@@ -52,15 +60,15 @@ class CommentController extends Controller
      */
     public function create(Request $request)
     {
-        $books = Book::orderBy('title', 'asc')->get();
-        $authors = Author::orderBy('surname', 'asc')->get();
+        // $books = Book::orderBy('title', 'asc')->get();
+        // $authors = Author::orderBy('surname', 'asc')->get();
 
-        return view('comment.create', [
-            'books' => $books,
-            'book_id' => $request->book_id ?? 'null',
-            'authors' => $authors,
-            'author_id' => $request->author_id ?? 'null',
-        ]);
+        // return view('comment.create', [
+        //     'books' => $books,
+        //     'book_id' => $request->book_id ?? 'null',
+        //     'authors' => $authors,
+        //     'author_id' => $request->author_id ?? 'null',
+        // ]);
     }
 
     /**
@@ -71,32 +79,32 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make(
-            $request->all(),
-            [
-                'comment_user' => ['required', 'min:3', 'max:30'],
-                'comment_date' => ['required', 'min:4', 'max:60'],
-                'comment_comment' => ['required', 'min:1', 'max:500'],
-                'book_id' => ['integer', 'min:1', 'max:10000'],
-                'author_id' => ['integer', 'min:1', 'max:10000'],
-            ]
-        );
+        //     $validator = Validator::make(
+        //         $request->all(),
+        //         [
+        //             'comment_user' => ['required', 'min:3', 'max:30'],
+        //             'comment_date' => ['required', 'min:4', 'max:60'],
+        //             'comment_comment' => ['required', 'min:1', 'max:500'],
+        //             'book_id' => ['integer', 'min:1', 'max:10000'],
+        //             'author_id' => ['integer', 'min:1', 'max:10000'],
+        //         ]
+        //     );
 
 
-        if ($validator->fails()) {
-            $request->flash();
-            return redirect()->back()->withErrors($validator);
-        }
-        $comment = new Comment;
-        $comment->user = $request->comment_user;
-        $comment->date = $request->comment_date;
-        $comment->comment = $request->comment_comment;
-        $comment->book_id = $request->book_id;
-        $comment->author_id = $request->author_id;
-        $comment->save();
-        return redirect()
-            ->route('comment.index')
-            ->with('success_message', 'New comment added.');
+        //     if ($validator->fails()) {
+        //         $request->flash();
+        //         return redirect()->back()->withErrors($validator);
+        //     }
+        //     $comment = new Comment;
+        //     $comment->user = $request->comment_user;
+        //     $comment->date = $request->comment_date;
+        //     $comment->comment = $request->comment_comment;
+        //     $comment->book_id = $request->book_id;
+        //     $comment->author_id = $request->author_id;
+        //     $comment->save();
+        //     return redirect()
+        //         ->route('comment.index')
+        //         ->with('success_message', 'New comment added.');
     }
 
     /**
@@ -140,9 +148,9 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        $comment->delete();
-        return redirect()
-            ->route('comment.index')
-            ->with('success_message', 'The comment was deleted.');
+        // $comment->delete();
+        // return redirect()
+        //     ->route('comment.index')
+        //     ->with('success_message', 'The comment was deleted.');
     }
 }

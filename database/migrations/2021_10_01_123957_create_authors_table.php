@@ -17,7 +17,8 @@ class CreateAuthorsTable extends Migration
             $table->id();
             $table->string('name', 60);
             $table->string('surname', 60);
-            $table->string('about', 200);
+            $table->string('about', 500);
+            $table->string('photo', 300)->nullable();
             $table->timestamps();
         });
     }

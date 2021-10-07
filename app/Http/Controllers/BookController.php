@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use App\Models\Author;
-use App\Models\Comment;
 use Validator;
-use PDF;
+
 
 class BookController extends Controller
 {
@@ -65,8 +64,8 @@ class BookController extends Controller
             $request->all(),
             [
                 'book_title' => ['required', 'min:3', 'max:60'],
-                'book_about' => ['required', 'min:3', 'max:200'],
-                'book_year' => ['required', 4],
+                'book_about' => ['required', 'min:3', 'max:500'],
+                'book_year' => ['required'],
                 'author_id' => ['integer', 'min:1', 'max:10000'],
             ]
         );
@@ -78,7 +77,7 @@ class BookController extends Controller
         }
         $book = new Book;
         $book->title = $request->book_title;
-        $book->about = $request->book_about;
+        $book->about = str_replace('script', '', $request->book_about);
         $book->year = $request->book_year;
         $book->author_id = $request->author_id;
         $book->save();
@@ -96,16 +95,10 @@ class BookController extends Controller
     public function show(Book $book)
     {
 
-        // $comments = Comment::orderBy('date', 'asc')->paginate(3);
-
         return view('book.show', [
             'book' => $book,
             'book_title' => $book->title,
             'book_about' => $book->about,
-            // 'comments' => $comments,
-
-
-
         ]);
     }
 
@@ -119,7 +112,6 @@ class BookController extends Controller
     public function edit(Book $book)
     {
         $authors = Author::orderBy('surname')->get();
-        // $comments = Comment::orderBy('date', 'desc')->get();
         return view('book.edit', ['book' => $book, 'authors' => $authors]);
     }
 
@@ -136,7 +128,7 @@ class BookController extends Controller
             $request->all(),
             [
                 'book_title' => ['required', 'min:3', 'max:60'],
-                'book_about' => ['required', 'min:3', 'max:200'],
+                'book_about' => ['required', 'min:3', 'max:500'],
                 'book_year' => ['required'],
                 'author_id' => ['integer', 'min:1', 'max:10000'],
             ]
@@ -169,10 +161,5 @@ class BookController extends Controller
         return redirect()
             ->route('book.index')
             ->with('success_message', 'The book was deleted.');
-    }
-    public function pdf(Book $book)
-    {
-        $pdf = PDF::loadView('book.pdf', ['book' => $book]);
-        return $pdf->download($book->title . '.pdf');
     }
 }

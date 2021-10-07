@@ -10025,6 +10025,7 @@ h3 {
   align-items: center;
   color: black;
   box-shadow: 1px 1px 1px 1px grey;
+  flex-wrap: wrap;
 }
 .list-block_content {
   flex-direction: row;
@@ -10043,6 +10044,10 @@ h3 {
 .list-block .list-block_button {
   display: flex;
   flex-direction: row;
+}
+.list-block_img img {
+  height: 150px;
+  width: auto;
 }
 
 .btn {
@@ -10072,6 +10077,9 @@ div.note-btn-group.btn-group {
   display: inline-flex;
   align-items: center;
 }
+.book-container_book {
+  width: 100%;
+}
 
 .readers-container {
   display: flex;
@@ -10088,21 +10096,4 @@ div.note-btn-group.btn-group {
 }
 .readers-container ul {
   margin: 20px;
-}
-
-.btn-outline-success:focus {
-  border-color: none !important;
-  line-height: none !important;
-  color: none !important;
-}
-
-.btn-sm:focus, .btn-group-sm > .btn:focus {
-  padding: none !important;
-  font-size: none !important;
-  line-height: none !important;
-}
-
-.btn:focus {
-  outline: none;
-  box-shadow: none;
 }

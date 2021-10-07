@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
    <div class="row justify-content-center">
-       <div class="col-md-8">
+       <div class="col-md-9">
            <div class="card">
                <div class="card-header">  
                     <div>Author: <h5>{{$author->name}} {{$author->surname}}</h5></div>                   
@@ -13,13 +13,16 @@
                         <div> Author has:<h6> {{$author->authorBooks->count()}} books </h6></div>
                     @endif
                     </div>
+                    <div class="list-block_img" style="margin: 10px; font-style: italic">
+                                    <img src="{{$author->photo}}">
+                    </div>
                 <div class="card-body">
                     <div class="list-block">
                         <div class="author-container">
                             <div class="book-container__book">                            
                                 <div style="margin: 10px; font-style: italic"> 
                                     <b>  About author: </b>
-                                 <div>{{$author->about}} </div>  
+                                 <div>{!!$author->about!!} </div>  
                                 </div> 
                                 
                                 <div>                     
@@ -32,15 +35,17 @@
                                     
                                     <div >                                                                  
                                         @comments(['model' => $author])
+                                        
                                     </div>                                         
                                 </div>         
                             </div>
-                            <div style="margin: 10px; font-style: italic"> 
+                            <div class="list-block_content" style="margin: 10px; font-style: italic">
+                            {{-- <div class="book-container__book">    --}}            
                                     <b>Books: </b> 
                             @foreach ($author->authorBooks as $book) 
                                    <ul><a href="{{route('book.show',[$book])}}" class="btn btn-secondary m-2">{{$book->title}}, {{$book->year}}</a></ul>                           
                             @endforeach            
-                            </div>                             
+                            </div>                            
                         </div>                        
                     </div> 
                 </div>                

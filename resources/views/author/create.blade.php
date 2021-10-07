@@ -8,7 +8,7 @@
                <div class="card-header">New Author</div>
                <div class="card-body">
                    <div class="list-block">
-                    <form action="{{route('author.store')}}" method="post">                       
+                    <form action="{{route('author.store')}}" method="post" enctype="multipart/form-data">                       
                             <div class="form-group" style="margin: 10px; font-style: italic">
                                 <label>   Name: </label>
                                 <input type="text" name="author_name" class="form-control" value="{{old('author_name')}}">
@@ -23,6 +23,11 @@
                                 <label>   About: </label>
                                 <textarea type="text" name="author_about" id="summernote" class="form-control" >{{old('author_about')}}</textarea>
                                 <small class="form-text text-muted">   Enter info about the author</small>
+                            </div>
+                            <div class="form-group" style="margin: 10px; font-style: italic">
+                                <label>   Photo: </label>
+                                <input type="file" name="author_photo" class="form-control">
+                                <small class="form-text text-muted">   Author's photo</small>
                             </div>
                 
                             <div class="form-group" style="margin: 10px">                         

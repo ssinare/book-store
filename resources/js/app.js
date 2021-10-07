@@ -32,12 +32,7 @@ require('./bootstrap');
 // });
 
 
-window
-document.addEventListener('DOMContentLoaded', () => {
-    if (document.querySelector('[name = comment_comment]')) {
-        $('[name = comment_comment]').summernote();
-    }
-});
+
 window
 document.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('[name = book_about]')) {
