@@ -8,7 +8,6 @@
                <div class="card-header"> <b>Books List</b>   
                 <form action="{{route('book.index')}}" method="get">
                     <fieldset>
-                        
                         <div class="list-block" >
                             <h6 style="padding-top: 10px; margin-left: 10px">Filter</h6>
                             <div class="form-group" style="margin: 10px; font-style: italic">

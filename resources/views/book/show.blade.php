@@ -13,7 +13,7 @@
                     </div> 
                     <div class="card-header_heading">   
                         <div class="img" style="margin: 10px; font-style: italic">
-                                            <img src="{{$book->photo}}">                    
+                            <img src="{{$book->photo}}">                    
                         </div>                
                     </div>     
                 </div>
@@ -34,11 +34,8 @@
                                 <div style="readers-container; margin: 10px; font-style: italic">  
                                     <div style="margin-bottom: 10px"><b>Readers comments: </b></div>
                                     <div >                             
-                    
                                         @comments(['model' => $book]) 
                                     </div>
-                                    
-                                                
                                 </div> 
                              </div>                        
                         </div>

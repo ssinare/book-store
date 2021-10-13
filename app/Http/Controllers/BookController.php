@@ -67,6 +67,7 @@ class BookController extends Controller
                 'book_about' => ['required', 'min:3', 'max:500'],
                 'book_year' => ['required'],
                 'author_id' => ['integer', 'min:1', 'max:10000'],
+                'book_photo' => ['sometimes', 'image'],
             ]
         );
 
@@ -76,6 +77,25 @@ class BookController extends Controller
             return redirect()->back()->withErrors($validator);
         }
         $book = new Book;
+        $file = $request->file('book_photo');
+
+        if ($file) {
+            $ext = $file->getClientOriginalExtension();
+            $name = rand(1000000, 9999999) . '_' . rand(1000000, 9999999);
+            $name = $name . '.' . $ext;
+            $destinationPath = public_path() . '/books-img/'; //serverio kelias viduje, ne per naršyklę
+            $file->move($destinationPath, $name);
+
+            $book->photo = asset('/books-img/' . $name);
+
+            // $img = Image::make($destinationPath . $name);
+            // $img->gamma(5.6)->flip('v');
+            // $img->save($destinationPath . $name);
+
+
+
+        }
+
         $book->title = $request->book_title;
         $book->about = str_replace('script', '', $request->book_about);
         $book->year = $request->book_year;
@@ -99,6 +119,7 @@ class BookController extends Controller
             'book' => $book,
             'book_title' => $book->title,
             'book_about' => $book->about,
+
         ]);
     }
 
@@ -131,6 +152,7 @@ class BookController extends Controller
                 'book_about' => ['required', 'min:3', 'max:500'],
                 'book_year' => ['required'],
                 'author_id' => ['integer', 'min:1', 'max:10000'],
+                'book_photo' => ['sometimes', 'image'],
             ]
         );
 
@@ -138,6 +160,37 @@ class BookController extends Controller
             $request->flash();
             return redirect()->back()->withErrors($validator);
         }
+
+        $file = $request->file('book_photo');
+
+        if ($file) {
+            $ext = $file->getClientOriginalExtension();
+            $name = rand(1000000, 9999999) . '_' . rand(1000000, 9999999);
+            $name = $name . '.' . $ext;
+            $destinationPath = public_path() . '/books-img/'; //serverio kelias viduje, ne per naršyklę
+            $file->move($destinationPath, $name);
+            $oldPhoto = $book->photo ?? '@';
+            $book->photo = asset('/books-img/' . $name);
+
+            $oldName = explode('/', $oldPhoto);
+            $oldName = array_pop($oldName);
+            if (file_exists($destinationPath . $oldName)) {
+                unlink($destinationPath . $oldName);
+            }
+        }
+
+
+        if ($request->book_photo_delete) {
+            $destinationPath = public_path() . '/books-img/';
+            $oldPhoto = $book->photo ?? '@';
+            $book->photo = null;
+            $oldName = explode('/', $oldPhoto);
+            $oldName = array_pop($oldName);
+            if (file_exists($destinationPath . $oldName)) {
+                unlink($destinationPath . $oldName);
+            }
+        }
+
         $book->title = $request->book_title;
         $book->about = str_replace('script', '', $request->book_about);
         $book->year = $request->book_year;
@@ -157,6 +210,14 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
+        $destinationPath = public_path() . '/books-img/';
+        $oldPhoto = $book->photo ?? ' ';
+        $oldName = explode('/', $oldPhoto);
+        $oldName = array_pop($oldName);
+        if (file_exists($destinationPath . $oldName)) {
+            unlink($destinationPath . $oldName);
+        }
+
         $book->delete();
         return redirect()
             ->route('book.index')

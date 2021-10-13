@@ -10010,10 +10010,10 @@ h3 {
   font-style: italic;
   box-shadow: 1px 1px 1px 1px grey;
 }
-.card-header_show_heading {
-  width: 50%;
-  float: left !important;
-  padding: 20px;
+.card-header_show .img {
+  margin: 10px;
+  height: 200px;
+  width: auto;
 }
 
 .card-header {
@@ -10024,9 +10024,9 @@ h3 {
   box-shadow: 1px 1px 1px 1px grey;
 }
 .card-header_heading {
+  margin: 10px;
   width: 50%;
   float: left !important;
-  padding: 20px;
 }
 
 .card-header_heading.img {
@@ -10068,6 +10068,10 @@ h3 {
 .list-block .list-block_button {
   display: flex;
   flex-direction: row;
+}
+.list-block_img {
+  height: 150px;
+  width: auto;
 }
 .list-block_img img {
   display: block;

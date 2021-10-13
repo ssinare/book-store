@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 use Faker\Factory as Faker;
 use Faker\Provider\en_US\Company;
 use Faker\Provider\DateTime;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,27 +25,33 @@ class DatabaseSeeder extends Seeder
         $faker = Faker::create('lt_LT');
 
 
-
+        $authorImages = storage_path('app\public\imgAuthors');
+        $images = File::allFiles($authorImages);
         foreach (range(1, 100) as $_) {
+            $randomFile = str_replace('C:\xampp\htdocs', '', $images[rand(0, count($images) - 1)]);
             DB::table('authors')->insert([
                 'name' => $faker->firstName(),
                 'surname' => $faker->lastName(),
-                'photo' => $faker->imageUrl(200, 100, 'author'),
+                'photo' => $randomFile,
                 'about' => $faker->realText(rand(10, 500)),
             ]);
         }
 
         $booksCount = 200;
+        $bookImages = storage_path('app\public\imgBooks');
+        $images = File::allFiles($bookImages);
         foreach (range(1, $booksCount) as $_) {
+            $randomFile = str_replace('C:\xampp\htdocs', '', $images[rand(0, count($images) - 1)]);
             DB::table('books')->insert([
                 'title' => $faker->realText(rand(15, 60)),
                 'about' => $faker->realText(rand(15, 500)),
-                'photo' => $faker->imageUrl(200, 100, 'cats'),
+                'photo' => $randomFile,
                 'year' => rand(1999, 2021),
                 'author_id' => rand(1, 100),
 
             ]);
         }
+
 
 
 

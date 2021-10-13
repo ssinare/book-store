@@ -10,22 +10,26 @@
                 <div class="list-block">
                     <form action="{{route('book.store')}}" method="post" enctype="multipart/form-data">                      
                         <div class="form-group" style="margin: 10px; font-style: italic">
-                                <label>   Title: </label>
-                                <input type="text" name="book_title" class="form-control" value="{{old('book_title')}}">
-                                <small class="form-text text-muted">   Enter new book title</small>
-                            </div>
-                           
+                            <label>   Title: </label>
+                            <input type="text" name="book_title" class="form-control" value="{{old('book_title')}}">
+                            <small class="form-text text-muted">   Enter new book title</small>
+                        </div>
+                        
+                        <div class="form-group" style="margin: 10px; font-style: italic">
+                            <label>   About: </label>
+                            <textarea type="text" name="book_about" id="summernote" class="form-control" >{{old('book_about')}}</textarea>
+                            <small class="form-text text-muted">   Enter comment about the book</small>
+                        </div>
                             <div class="form-group" style="margin: 10px; font-style: italic">
-                                <label>   About: </label>
-                                <textarea type="text" name="book_about" id="summernote" class="form-control" >{{old('book_about')}}</textarea>
-                                <small class="form-text text-muted">   Enter comment about the book</small>
-                            </div>
-                             <div class="form-group" style="margin: 10px; font-style: italic">
-                                <label>   Publish year: </label>
-                                <input type="text" name="book_year" class="form-control" value="{{old('book_year')}}">
-                                <small class="form-text text-muted">   Enter new book publish year</small>
-                            </div>
-                           
+                            <label>   Publish year: </label>
+                            <input type="text" name="book_year" class="form-control" value="{{old('book_year')}}">
+                            <small class="form-text text-muted">   Enter new book publish year</small>
+                        </div>
+                        <div class="form-group" style="margin: 10px; font-style: italic">
+                            <label>   Photo: </label>
+                            <input type="file" name="book_photo" class="form-control">
+                            <small class="form-text text-muted">   Book's photo</small>
+                        </div>
                          
                         <div class="form-group" style="margin: 10px; font-style: italic">
                             <label>   Author: </label>

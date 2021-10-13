@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Book;
 use Validator;
 use PDF;
+use Intervention\Image\ImageManagerStatic as Image;
+
 
 class AuthorController extends Controller
 {
@@ -79,15 +81,12 @@ class AuthorController extends Controller
             $name = $name . '.' . $ext;
             $destinationPath = public_path() . '/authors-img/'; //serverio kelias viduje, ne per naršyklę
             $file->move($destinationPath, $name);
-            $oldPhoto = $author->photo ?? ' ';
+
             $author->photo = asset('/authors-img/' . $name);
 
-            // $img = Image::make($destinationPath . $name);
-            // $img->gamma(5.6)->flip('v');
-            // $img->save($destinationPath . $name);
-
-
-
+            $img = Image::make($destinationPath . $name);
+            $img->gamma(5.6)->flip('v');
+            $img->save($destinationPath . $name);
         }
 
         $author->name = $request->author_name;
