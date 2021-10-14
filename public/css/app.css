@@ -10012,8 +10012,10 @@ h3 {
 }
 .card-header_show .img {
   margin: 10px;
-  height: 200px;
-  width: auto;
+  height: 150px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .card-header {
@@ -10028,10 +10030,27 @@ h3 {
   width: 50%;
   float: left !important;
 }
+.card-header_heading .img {
+  margin: 10px;
+  height: 150px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
 
 .card-header_heading.img {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   margin: 10px;
   justify-content: center;
+}
+.card-header_heading.img .img {
+  margin: 10px;
+  height: 150px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .card-body {
@@ -10092,6 +10111,10 @@ div.form-group {
   font-style: italic;
   margin-left: 10px !important;
   margin: 10px;
+}
+div.form-group .img img {
+  height: 150px;
+  width: auto;
 }
 
 div.note-btn-group.btn-group {

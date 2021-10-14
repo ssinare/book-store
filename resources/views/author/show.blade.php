@@ -15,9 +15,7 @@
                     @endif
                     </div> 
                     <div class="card-header_heading">   
-                    <div class="img" style="margin: 10px; font-style: italic">
-                                        <img src="{{$author->photo}}">                    
-                    </div>                
+                    <img src="{{$author->photo}}" class="img" style="display:block; width:80%; height:80%; margin: 10px; font-style: italic">                                                                                   
                     </div>
                 </div>
                 <div class="card-body">

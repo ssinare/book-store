@@ -12,9 +12,7 @@
                         <div>Publish year: {{$book->year}}</div>                    
                     </div> 
                     <div class="card-header_heading">   
-                        <div class="img" style="margin: 10px; font-style: italic">
-                            <img src="{{$book->photo}}">                    
-                        </div>                
+                        <img src="{{$book->photo}}" class="img" style="display:block;width:80%;height:80%; margin: 10px; font-style: italic">                     
                     </div>     
                 </div>
                 

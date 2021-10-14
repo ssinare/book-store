@@ -7,8 +7,8 @@
     box-shadow: 1px 1px 1px 1px grey;
     .img {
         margin: 10px;
-        height: 200px;
-        width: auto;
+        height: 150px;
+        width: fit-content;
     }
 }
 .card-header {
@@ -21,11 +21,22 @@
         margin: 10px;
         width: 50%;
         float: left !important;
+        .img {
+            margin: 10px;
+            height: 150px;
+            width: fit-content;
+        }
     }
 }
 .card-header_heading.img {
+    height: fit-content;
     margin: 10px;
     justify-content: center;
+    .img {
+        margin: 10px;
+        height: 150px;
+        width: fit-content;
+    }
 }
 .card-body {
     box-shadow: 1px 1px 1px 1px grey;
@@ -86,6 +97,12 @@ div.form-group {
     font-style: italic;
     margin-left: 10px !important;
     margin: 10px;
+    .img {
+        img {
+            height: 150px;
+            width: auto;
+        }
+    }
 }
 div.note-btn-group.btn-group {
     margin: 0;
