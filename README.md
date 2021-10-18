@@ -12,14 +12,14 @@
 This project is for educational porpuses only.
 
 The task:
-You need to create book store web app.
-There should be catalogue of books and catalogue of authors only.
-All CRUD operations should be implemented for both authors and books - all operations do not require authorization.
-There should be comments section for both authors and books.
-Catalogues should have pagination.
-Only top 5 comments should be shown by default and "Load more" button should be available in case there are more comments.
-Page of author should have links to each book.
-Books and authors should have pictures.
+- You need to create book store web app.
+- There should be catalogue of books and catalogue of authors only.
+- All CRUD operations should be implemented for both authors and books - all operations do not require authorization.
+- There should be comments section for both authors and books.
+- Catalogues should have pagination.
+- Only top 5 comments should be shown by default and "Load more" button should be available in case there are more comments.
+- Page of author should have links to each book.
+- Books and authors should have pictures.
 
 Site published at:
 https://ssinare.github.io/book-store/
@@ -28,12 +28,14 @@ https://ssinare.github.io/book-store/
 
 - Laravel framework
 - Github pages
-- multi-page
-- connected to Maria DB
+- Multi-page
+- Connected to Maria DB
 - Faker for seeding data
 - Comments
 - Pagination
 - PDF
+- Pictures
+- Linked pages
 
 ## Authors
 
