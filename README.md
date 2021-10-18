@@ -10,6 +10,7 @@
 ## About
 
 This project is for educational porpuses only.
+
 The task:
 You need to create book store web app.
 There should be catalogue of books and catalogue of authors only.
