@@ -24,6 +24,7 @@ The task:
 - Books and authors should have pictures.
 
 Site published at:
+
 https://ssinare.github.io/book-store/
 
 ## Project features
