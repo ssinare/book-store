@@ -13,10 +13,10 @@
 <div>
     @php
         $comments = $comments->sortByDesc('created_at');
-        $perPage = 5;
+       // $perPage = 5;
         if (isset($perPage)) {
-            $page = request()->query('page', 1) - 1;
-
+            //$page = request()->query('page', 1) - 1;
+            $page = 0;
             $parentComments = $comments->where('child_id', '');
 
             $slicedParentComments = $parentComments->slice($page * $perPage, $perPage);
@@ -47,7 +47,7 @@
                 @include('comments::_comment', [
                     'comment' => $comment,
                     'grouped_comments' => $grouped_comments,
-                    'maxIndentationLevel' => $maxIndentationLevel ?? 3
+                    'maxIndentationLevel' => $maxIndentationLevel ?? 1
                 ])
             @endforeach
         @endif
@@ -55,8 +55,13 @@
 </div>
 
 @isset ($perPage)
-<a wire:click="load" class="btn btn-secondary">Load more...</a>
+    
+    @if( get_class($model)  == 'App\Models\Author')
+    <a href="{{route('author.show',[$author,$perPage+=5])}}" class="btn btn-secondary">Load more...</a>
+    @elseif (get_class($model)  == 'App\Models\Book')
+<a href="{{route('book.show',[$book,$perPage+=5])}}" class="btn btn-secondary">Load more...</a>
     {{-- {{ $grouped_comments->links() }} --}}
+    @endif
 @endisset
 
 @auth

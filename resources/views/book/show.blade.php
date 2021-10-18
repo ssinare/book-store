@@ -32,7 +32,7 @@
                                 <div style="readers-container; margin: 10px; font-style: italic">  
                                     <div style="margin-bottom: 10px"><b>Readers comments: </b></div>
                                     <div >                             
-                                        @comments(['model' => $book]) 
+                                        @comments(['model' => $book, 'perPage' => $pageSize]) 
                                     </div>
                                 </div> 
                              </div>                        

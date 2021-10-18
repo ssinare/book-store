@@ -34,9 +34,9 @@
 
                                 <div style="readers-container; margin: 10px; font-style: italic">  
                                     <div style="margin-bottom: 10px"><b>Readers comments: </b></div>
-                                    
+                                  
                                     <div >                                                                  
-                                        @comments(['model' => $author])
+                                        @comments(['model' => $author, 'perPage' => $pageSize])
                                         
                                     </div>                                         
                                 </div>         

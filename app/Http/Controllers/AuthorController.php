@@ -104,14 +104,16 @@ class AuthorController extends Controller
      * @param  \App\Models\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function show(Author $author)
+    public function show(Author $author, int $comments = 5)
     {
+        $pageSize = $comments;
         $books = Book::orderBy('title')->get();
         return view('author.show', [
             'author' => $author,
             'author_name' => $author->name,
             'author_surname' => $author->surname,
             'books' => $books,
+            'pageSize' => $pageSize
         ]);
     }
 

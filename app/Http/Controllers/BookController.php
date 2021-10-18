@@ -87,13 +87,6 @@ class BookController extends Controller
             $file->move($destinationPath, $name);
 
             $book->photo = asset('/books-img/' . $name);
-
-            // $img = Image::make($destinationPath . $name);
-            // $img->gamma(5.6)->flip('v');
-            // $img->save($destinationPath . $name);
-
-
-
         }
 
         $book->title = $request->book_title;
@@ -112,14 +105,15 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function show(Book $book)
+    public function show(Book $book, int $comments = 5)
     {
+        $pageSize = $comments;
 
         return view('book.show', [
             'book' => $book,
             'book_title' => $book->title,
             'book_about' => $book->about,
-
+            'pageSize' => $pageSize
         ]);
     }
 
@@ -167,7 +161,7 @@ class BookController extends Controller
             $ext = $file->getClientOriginalExtension();
             $name = rand(1000000, 9999999) . '_' . rand(1000000, 9999999);
             $name = $name . '.' . $ext;
-            $destinationPath = public_path() . '/books-img/'; //serverio kelias viduje, ne per naršyklę
+            $destinationPath = public_path() . '/books-img/';
             $file->move($destinationPath, $name);
             $oldPhoto = $book->photo ?? '@';
             $book->photo = asset('/books-img/' . $name);
