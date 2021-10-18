@@ -25,14 +25,14 @@ https://ssinare.github.io/book-store/
 
 ## Project features
 
-Laravel framework
-Github pages
-multi-page
-connected to Maria DB
-Faker for seeding data
-Comments
-Pagination
-PDF
+- Laravel framework
+- Github pages
+- multi-page
+- connected to Maria DB
+- Faker for seeding data
+- Comments
+- Pagination
+- PDF
 
 ## Authors
 
