@@ -10004,7 +10004,7 @@ h3 {
 }
 .card-header_show {
   display: inline-flex !important;
-  background-color: rgba(238, 235, 230, 0.438);
+  background-color: darkgray;
   color: black;
   font-weight: 200;
   font-style: italic;
@@ -10019,7 +10019,7 @@ h3 {
 }
 
 .card-header {
-  background-color: rgba(238, 235, 230, 0.438);
+  background-color: darkgray;
   color: black;
   font-weight: 200;
   font-style: italic;
@@ -10055,6 +10055,7 @@ h3 {
 
 .card-body {
   box-shadow: 1px 1px 1px 1px grey;
+  background-color: lightgrey;
 }
 
 .py-4 {
@@ -10062,7 +10063,12 @@ h3 {
   box-shadow: 1px 1px 1px 1px grey;
 }
 
+.list-group-item {
+  background-color: lightgrey;
+}
+
 .list-block {
+  background-color: lightgrey;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
