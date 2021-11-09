@@ -30,7 +30,7 @@
                                         <small>Author has {{$author->authorBooks->count()}} books: </small>
                                             @endif
                                         @foreach($author->authorBooks as $book)
-                                        <ul class="fa-ul" style="margin-left: 0; color:grey"><i class="fa fa-book"></i> <a href="{{route('book.show',[$book])}}" class=" btn btn-link">{{$book->title}}</a></ul>
+                                        <ul class="fa-ul" style="margin-left: 0; color:grey;"><i class="fa fa-book"></i> <a href="{{route('book.show',[$book])}}" class=" btn btn-link">{{$book->title}}</a></ul>
                                         @endforeach 
                                         @else 
                                         <small>Currently has no books</small>

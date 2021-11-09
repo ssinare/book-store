@@ -29,7 +29,7 @@
                                     <a href="{{route('book.edit',[$book])}}" class="btn btn-secondary m-2">Edit</a>                       
                                 </div>
 
-                                <div style="readers-container; margin: 10px; font-style: italic">  
+                                <div class="readers-container">  
                                     <div style="margin-bottom: 10px"><b>Readers comments: </b></div>
                                     <div >                             
                                         @comments(['model' => $book, 'perPage' => $pageSize]) 

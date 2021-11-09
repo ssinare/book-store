@@ -10572,13 +10572,8 @@ div.note-btn-group.btn-group {
 }
 
 .readers-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 10px;
-    letter-spacing: 1px;
-    padding: 11px;
+    margin: 10px;
+    font-style: italic;
 }
 .readers-container__comments {
     display: inline-block;
