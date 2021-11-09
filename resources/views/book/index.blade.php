@@ -28,7 +28,7 @@
                 </form>
                 </div>
                <div class="card-body">
-                   <div class="mb-3">{{$books->links()}}</div>
+                   <div class="mb-3">{{$books->onEachSide(0)->links()}}</div>
                    <ul class="list-group">
                     @foreach ($books as $book)
                     <li class="list-group-item">
@@ -59,7 +59,7 @@
                     </li>      
                     @endforeach
                    </ul>
-                    <div class="m-2">{{$books->links()}}</div> 
+                    <div class="m-2">{{$books->onEachSide(0)->links()}}</div> 
                </div>
            </div>
        </div>

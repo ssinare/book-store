@@ -10055,7 +10055,7 @@ h3 {
 
 .card-body {
   box-shadow: 1px 1px 1px 1px grey;
-  background-color: lightgrey;
+  background-color: rgba(238, 235, 230, 0.438);
 }
 
 .py-4 {
@@ -10064,16 +10064,17 @@ h3 {
 }
 
 .list-group-item {
-  background-color: lightgrey;
+  background-color: rgba(238, 235, 230, 0.438);
 }
 
 .list-block {
-  background-color: lightgrey;
+  background-color: rgba(238, 235, 230, 0.438);
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   color: black;
-  box-shadow: 1px 1px 1px 1px grey;
+  border-radius: 5%;
+  box-shadow: 1px 1px 1px 1px lightgrey;
   flex-wrap: wrap;
 }
 .list-block_content {
@@ -10140,6 +10141,11 @@ div.note-btn-group.btn-group {
 }
 .book-container_book {
   width: 100%;
+}
+
+.fa-ul {
+  margin-left: 0 !important;
+  color: grey;
 }
 
 .readers-container {

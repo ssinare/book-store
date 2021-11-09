@@ -8,7 +8,7 @@
            <div class="card">
                <div class="card-header">Authors List</div>
                <div class="card-body">
-                    <div class="mb-3">{{$authors->links()}}</div> 
+                    <div class="mb-3">{{$authors->onEachSide(0)->links()}}</div> 
                     <ul class="list-group">
                         @foreach ($authors as $author)
                         <li class="list-group-item">
@@ -30,7 +30,7 @@
                                         <small>Author has {{$author->authorBooks->count()}} books: </small>
                                             @endif
                                         @foreach($author->authorBooks as $book)
-                                        <ul><a href="{{route('book.show',[$book])}}" class=" btn btn-secondary">{{$book->title}}</a></ul>
+                                        <ul class="fa-ul" style="margin-left: 0; color:grey"><i class="fa fa-book"></i> <a href="{{route('book.show',[$book])}}" class=" btn btn-link">{{$book->title}}</a></ul>
                                         @endforeach 
                                         @else 
                                         <small>Currently has no books</small>
@@ -54,7 +54,7 @@
                         </li>
                         @endforeach 
                     </ul>
-                    <div class="m-2">{{$authors->links()}}</div>       
+                    <div class="m-2">{{$authors->onEachSide(0)->links()}}</div>       
                </div>
            </div>
        </div>
