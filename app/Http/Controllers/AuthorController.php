@@ -85,7 +85,7 @@ class AuthorController extends Controller
             $author->photo = asset('/authors-img/' . $name);
 
             $img = Image::make($destinationPath . $name);
-            $img->gamma(5.6)->flip('v');
+            // $img->gamma(5.6)->flip('v');
             $img->save($destinationPath . $name);
         }
 
