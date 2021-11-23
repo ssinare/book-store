@@ -28,7 +28,9 @@ class DatabaseSeeder extends Seeder
         $authorImages = storage_path('app\public\imgAuthors');
         $images = File::allFiles($authorImages);
         foreach (range(1, 100) as $_) {
-            $randomFile = str_replace('C:\xampp\htdocs', '', $images[rand(0, count($images) - 1)]);
+            // $randomFile = str_replace('\app\public', '', str_replace('C:\xampp\htdocs\book-store', '', $images[rand(0, count($images) - 1)]));
+            $randomFile = str_replace('\app\public', '', str_replace('C:\xampp\htdocs\book-store', '/book-store/public_html', $images[rand(0, count($images) - 1)]));
+            $randomFile = str_replace('\\', '/', $randomFile);
             DB::table('authors')->insert([
                 'name' => $faker->firstName(),
                 'surname' => $faker->lastName(),
@@ -41,7 +43,8 @@ class DatabaseSeeder extends Seeder
         $bookImages = storage_path('app\public\imgBooks');
         $images = File::allFiles($bookImages);
         foreach (range(1, $booksCount) as $_) {
-            $randomFile = str_replace('C:\xampp\htdocs', '', $images[rand(0, count($images) - 1)]);
+            $randomFile = str_replace('\app\public', '', str_replace('C:\xampp\htdocs\book-store', '/book-store/public_html', $images[rand(0, count($images) - 1)]));
+            $randomFile = str_replace('\\', '/', $randomFile);
             DB::table('books')->insert([
                 'title' => $faker->realText(rand(15, 60)),
                 'about' => $faker->realText(rand(15, 500)),
@@ -58,7 +61,7 @@ class DatabaseSeeder extends Seeder
         foreach (range(1, 900) as $_) {
             DB::table('comments')->insert([
                 'guest_name' => $faker->userName(),
-                'guest_email' => $faker->dateTimeThisDecade($max = 'now', $timezone = null),
+                'guest_email' => $faker->email(),
                 'comment' => $faker->realText(rand(10, 200)),
                 'commentable_type' => 'App\Models\Author',
                 'commentable_id' => rand(1, 100),
