@@ -42,7 +42,7 @@ Route::group(['prefix' => 'books'], function () {
 });
 
 
-//Route::get('generate-pdf', 'PDFController@generatePDF');
+
 
 Auth::routes(['register' => false]);
 
