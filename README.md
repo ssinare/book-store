@@ -19,7 +19,7 @@ The task:
 
 Site published at:
 
-https://ssinare.github.io/book-store/
+http://migne.eu
 
 ## Project features
 
