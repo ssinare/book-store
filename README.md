@@ -35,6 +35,7 @@ http://migne.eu
 - Pagination
 - PDF for authors
 - Pictures
+- Font Awesome
 - Linked pages
 
 ## Authors
