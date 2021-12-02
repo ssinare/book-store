@@ -42,11 +42,11 @@ Route::group(['prefix' => 'books'], function () {
 });
 
 
-//Route::get('generate-pdf', 'PDFController@generatePDF');
-
-//Auth::routes(['register' => false]);
 
 
-Auth::routes();
+Auth::routes(['register' => false]);
+
+
+//Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

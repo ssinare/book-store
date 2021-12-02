@@ -30,7 +30,11 @@
         .about {
             font-size: 11px;
             color: gray;
+            
         }
+        .img {
+
+            }
         .color {
             margin: 12px;
             font-size: 25px;
@@ -44,9 +48,12 @@ div {
 <body>
 <div style="font-size:35px; "> Author: {{$author->name}} {{$author->surname}}</div>
 
-<div style="font-size:30px; "><img src="{{$author->photo}}" style="width: 200px; height: 200px"></div>
+<div style="font-size:30px; "><img src="http://localhost{{$author->photo}}" style="width: 200px; height: 200px"></div>
 <div style="font-size:22px; "> <b>Books: </b> 
-                            <div> {{$author->photo}}
+                            <div> 
+
+                               
+                              
                             @foreach ($author->authorBooks as $book) 
                                    <li> {{$book->title}}, Publish year: {{$book->year}}</li>  
                             <div style="font-size:14px "> Info about the book: {!!$book->about!!}</div>

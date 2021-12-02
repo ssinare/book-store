@@ -79,14 +79,16 @@ class AuthorController extends Controller
             $ext = $file->getClientOriginalExtension();
             $name = rand(1000000, 9999999) . '_' . rand(1000000, 9999999);
             $name = $name . '.' . $ext;
-            $destinationPath = public_path() . '/authors-img/'; //serverio kelias viduje, ne per naršyklę
+            $destinationPath = public_path() . '/authors-img/';
             $file->move($destinationPath, $name);
 
             $author->photo = asset('/authors-img/' . $name);
+            //$author->photo = '/book-store/public_html/authors-img/' . $name;
 
-            $img = Image::make($destinationPath . $name);
-            $img->gamma(5.6)->flip('v');
-            $img->save($destinationPath . $name);
+
+            // $img = Image::make($destinationPath . $name);
+            // $img->gamma(5.6)->flip('v');
+            // $img->save($destinationPath . $name);
         }
 
         $author->name = $request->author_name;
@@ -160,10 +162,13 @@ class AuthorController extends Controller
             $ext = $file->getClientOriginalExtension();
             $name = rand(1000000, 9999999) . '_' . rand(1000000, 9999999);
             $name = $name . '.' . $ext;
-            $destinationPath = public_path() . '/authors-img/'; //serverio kelias viduje, ne per naršyklę
+            $destinationPath = public_path() . '/authors-img/';
             $file->move($destinationPath, $name);
             $oldPhoto = $author->photo ?? ' ';
             $author->photo = asset('/authors-img/' . $name);
+            //$author->photo = '/book-store/public_html/authors-img/' . $name;
+
+
 
             $oldName = explode('/', $oldPhoto);
             $oldName = array_pop($oldName);

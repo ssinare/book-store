@@ -32,7 +32,7 @@
                                     <a href="{{route('author.pdf',[$author])}}" class="btn btn-secondary m-2">PDF</a>                       
                                 </div>
 
-                                <div style="readers-container; margin: 10px; font-style: italic">  
+                                <div class="readers-container">  
                                     <div style="margin-bottom: 10px"><b>Readers comments: </b></div>
                                   
                                     <div >                                                                  
@@ -45,7 +45,7 @@
                             {{-- <div class="book-container__book">    --}}            
                                     <b>Books: </b> 
                             @foreach ($author->authorBooks as $book) 
-                                   <ul><a href="{{route('book.show',[$book])}}" class="btn btn-secondary m-2">{{$book->title}}, {{$book->year}}</a></ul>                           
+                                   <ul class="fa-ul" style="margin-left: 0; color:grey;  font-size: 25px"><i class="fa fa-book"></i><a href="{{route('book.show',[$book])}}" class="btn btn-link m-2">{{$book->title}}, {{$book->year}}</a></ul>                           
                             @endforeach            
                             </div>                            
                         </div>                        

@@ -40,22 +40,23 @@
 }
 .card-body {
     box-shadow: 1px 1px 1px 1px grey;
-    background-color: lightgrey;
+    background-color: rgba(238, 235, 230, 0.438);
 }
 .py-4 {
     background-color: rgba(238, 235, 230, 0.438);
     box-shadow: 1px 1px 1px 1px grey;
 }
 .list-group-item {
-    background-color: lightgrey;
+    background-color: rgba(238, 235, 230, 0.438);
 }
 .list-block {
-    background-color: lightgrey;
+    background-color: rgba(238, 235, 230, 0.438);
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     color: black;
-    box-shadow: 1px 1px 1px 1px grey;
+    border-radius: 5%;
+    box-shadow: 1px 1px 1px 1px lightgrey;
     flex-wrap: wrap;
 
     &_content {
@@ -126,15 +127,14 @@ div.note-btn-group.btn-group {
     }
 }
 
+.fa-ul {
+    margin-left: 0 !important;
+    color: grey;
+    font-size: 25px;
+}
 .readers-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 10px;
-    letter-spacing: 1px;
-    padding: 11px;
-
+    margin: 10px;
+    font-style: italic;
     &__comments {
         display: inline-block;
         box-shadow: 1px 1px 1px 1px grey;

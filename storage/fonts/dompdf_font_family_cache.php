@@ -78,7 +78,7 @@
     'normal' => $rootDir . '/lib/fonts/DejaVuSerif',
   ),
   'roboto slab' => array(
-    'normal' => $fontDir . '/roboto_slab_normal_fcbef52644a17dcb3f25b35f2e38507a',
-    'bold' => $fontDir . '/roboto_slab_bold_a555c99bd735fee43f5fda2b6ae0ee53',
+    'normal' => $fontDir . '/roboto_slab_normal_87b66c1d701851b97006244dc6a07442',
+    'bold' => $fontDir . '/roboto_slab_bold_e2bf4eb0590f5ecf295c517a0256d551',
   ),
 ) ?>

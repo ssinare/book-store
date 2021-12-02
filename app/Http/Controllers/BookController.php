@@ -86,7 +86,7 @@ class BookController extends Controller
             $destinationPath = public_path() . '/books-img/'; //serverio kelias viduje, ne per naršyklę
             $file->move($destinationPath, $name);
 
-            $book->photo = asset('/books-img/' . $name);
+            $book->photo = asset('/books-img/' . $name); //serverio kelias per narsykle,
         }
 
         $book->title = $request->book_title;

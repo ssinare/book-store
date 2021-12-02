@@ -53,13 +53,16 @@
         @endif
     @endforeach
 </div>
-
 @isset ($perPage)
-    
+
     @if( get_class($model)  == 'App\Models\Author')
+        @if (count($comments) == $perPage )
     <a href="{{route('author.show',[$author,$perPage+=5])}}" class="btn btn-secondary">Load more...</a>
+        @endif
     @elseif (get_class($model)  == 'App\Models\Book')
-<a href="{{route('book.show',[$book,$perPage+=5])}}" class="btn btn-secondary">Load more...</a>
+        @if (count($comments) == $perPage )
+    <a href="{{route('book.show',[$book,$perPage+=5])}}" class="btn btn-secondary">Load more...</a>
+        @endif
     {{-- {{ $grouped_comments->links() }} --}}
     @endif
 @endisset
